@@ -12,9 +12,7 @@ currency = input(
 amount = int(input('Input amount of money you want to convert: '))
 url = f'https://api.currencyapi.com/v3/latest?apikey={apikey}&base_currency={base}&currencies={currency}'
 
-
 response = requests.get(url)
-
 
 if response.status_code == 200:
     data = response.json()
@@ -22,8 +20,6 @@ if response.status_code == 200:
     converter = (data['data'][currency]['value'])
     print(f'Converting {amount} {base} is equal {round(converter * amount, 2)} {currency}, with conversion rate of {round(converter, 2)}.')
 elif response.status_code == 429:
-
     print('This apiKey has reached monthly request limit. Sorry.')
 else:
     print('Error occurred')
-
